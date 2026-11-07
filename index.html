@@ -1,0 +1,1474 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidya's Magical Diwali ✨</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --pink: #f7a9c5;
+    --light-pink: #ffe0eb;
+    --gold: #f5cf87;
+    --gold-light: #ffedc0;
+    --wine: #581d3b;
+    --deep: #260d24;
+    --cream: #fff6ed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+
+    background:
+      radial-gradient(ellipse at 50% 0%, #a54b70 0%, transparent 45%),
+      radial-gradient(circle at bottom left, #6e2450, transparent 40%),
+      linear-gradient(145deg, #200d25, #481831 55%, #230c25);
+}
+
+/* Background canvas */
+
+#effects {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+#petals {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.petal {
+    position: absolute;
+    top: -35px;
+    animation: falling linear forwards;
+    opacity: .9;
+}
+
+@keyframes falling {
+    to {
+        transform: translate(100px, 110vh) rotate(650deg);
+        opacity: .1;
+    }
+}
+
+/* Top decoration */
+
+.top-lights {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 8;
+    pointer-events: none;
+}
+
+.top-lights span {
+    width: 10px;
+    height: 14px;
+    margin-top: 12px;
+    border-radius: 50%;
+    background: #ffe7a4;
+    box-shadow: 0 0 15px 5px #f4b95f;
+    animation: glow 1.5s infinite alternate;
+}
+
+.top-lights span:nth-child(even) {
+    animation-delay: .6s;
+}
+
+@keyframes glow {
+    from { opacity: .45; }
+    to { opacity: 1; }
+}
+
+/* Opening screen */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+
+    background:
+      radial-gradient(circle at center, #71304e, transparent 65%),
+      linear-gradient(145deg, #230c24, #501b3d);
+    transition: opacity .8s, visibility .8s;
+}
+
+#intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 25px;
+}
+
+.intro-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px, 12vw, 90px);
+    color: #ffdce8;
+    text-shadow: 0 0 25px #f4a9c9;
+}
+
+.envelope {
+    width: 160px;
+    height: 115px;
+    position: relative;
+    margin: 40px auto 30px;
+    background: linear-gradient(135deg, #ffcedc, #f4b9a4);
+    border-radius: 9px;
+    cursor: pointer;
+    box-shadow: 0 0 40px #e99db8;
+    animation: envelopeFloat 2s infinite ease-in-out;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, transparent 49%, #d77b9b 50%);
+    clip-path: polygon(0 100%, 50% 35%, 100% 100%);
+    border-radius: 0 0 9px 9px;
+}
+
+.envelope::after {
+    content: "V";
+    position: absolute;
+    top: 35px;
+    left: 57px;
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fce4aa, #d9a14e);
+    color: #682c45;
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    border: 2px solid white;
+    z-index: 3;
+}
+
+.envelope .flap {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #ffe4eb, #ec9fba);
+    clip-path: polygon(0 0, 100% 0, 50% 65%);
+    transform-origin: top;
+    transition: transform .6s;
+    z-index: 2;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+@keyframes envelopeFloat {
+    50% { transform: translateY(-10px); }
+}
+
+.open-btn {
+    padding: 15px 32px;
+    border: 1px solid white;
+    border-radius: 40px;
+    background: linear-gradient(110deg, #eeb8a2, #ffdfac, #f4a9c5);
+    color: #642844;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 30px #eca9bf;
+    transition: .3s;
+}
+
+.open-btn:hover {
+    transform: scale(1.08);
+}
+
+/* Main website */
+
+#main {
+    display: none;
+    position: relative;
+    z-index: 3;
+    padding: 75px 16px 40px;
+}
+
+#main.visible {
+    display: block;
+    animation: pageIn 1s ease;
+}
+
+@keyframes pageIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+
+/* Decorative card */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 50px 24px 35px;
+    border: 1px solid rgba(255, 223, 164, .8);
+    border-radius: 28px;
+
+    background:
+      linear-gradient(135deg,
+       rgba(255, 218, 228, .13),
+       rgba(255, 255, 255, .035));
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+       0 0 45px rgba(255, 180, 209, .12),
+       inset 0 0 40px rgba(255, 224, 173, .07);
+}
+
+.hero::before,
+.hero::after {
+    position: absolute;
+    content: "✿";
+    color: var(--gold);
+    font-size: 65px;
+    opacity: .7;
+}
+
+.hero::before {
+    top: 8px;
+    left: 12px;
+}
+
+.hero::after {
+    bottom: 8px;
+    right: 12px;
+}
+
+.corners {
+    position: absolute;
+    inset: 16px;
+    border: 1px solid rgba(245, 207, 135, .25);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 23px;
+}
+
+.main-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 8vw, 70px);
+    line-height: 1.15;
+    color: var(--gold-light);
+    text-shadow: 0 0 25px rgba(255, 196, 118, .45);
+}
+
+.vidya {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(75px, 15vw, 120px);
+    color: #ffb8d1;
+    line-height: 1.35;
+    text-shadow: 0 0 30px rgba(255, 170, 205, .6);
+    animation: nameGlow 3s infinite alternate;
+}
+
+@keyframes nameGlow {
+    to { text-shadow: 0 0 40px #f89abb, 0 0 70px #f2b4c9; }
+}
+
+.subtitle {
+    max-width: 570px;
+    margin: 12px auto;
+    line-height: 2;
+    color: #ffe7ef;
+    font-size: 14px;
+}
+
+.ornament {
+    color: var(--gold);
+    letter-spacing: 12px;
+    margin: 17px 0;
+}
+
+/* Decorations */
+
+.diyas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.diya {
+    font-size: 50px;
+    filter: drop-shadow(0 0 15px #ffc46e);
+    animation: diyaDance 1.5s infinite alternate;
+}
+
+.diya:nth-child(2) {
+    font-size: 68px;
+    animation-delay: .4s;
+}
+
+.diya:nth-child(3) {
+    animation-delay: .8s;
+}
+
+@keyframes diyaDance {
+    from { transform: translateY(0) scale(.93); }
+    to { transform: translateY(-8px) scale(1.1); }
+}
+
+/* Buttons */
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px 0 10px;
+}
+
+.btn {
+    padding: 14px 22px;
+    border-radius: 40px;
+    border: 1px solid #fff0c9;
+    background: linear-gradient(110deg, #eeb8a2, #ffe3ae, #f5aeca);
+    color: #5d2941;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .5px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 0 18px rgba(255, 198, 136, .18);
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 0 30px #ecb4c8;
+}
+
+.btn.outline {
+    color: var(--gold-light);
+    background: rgba(255, 255, 255, .06);
+    border-color: var(--gold);
+}
+
+/* Reveal message */
+
+.message {
+    display: none;
+    margin: 30px auto 0;
+    padding: 32px 22px;
+    max-width: 610px;
+    border: 1px solid var(--gold);
+    border-radius: 24px;
+    background: linear-gradient(145deg,
+      rgba(255, 197, 215, .18),
+      rgba(255, 218, 165, .09));
+    animation: reveal .8s ease;
+}
+
+.message.show {
+    display: block;
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(25px) scale(.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.message h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    color: #ffc3d9;
+    margin-bottom: 20px;
+}
+
+.message p {
+    color: #fff1e8;
+    font-size: 14px;
+    line-height: 2.15;
+}
+
+.signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: 35px;
+    color: var(--gold);
+    margin-top: 23px;
+}
+
+/* Audio section */
+
+.audio-card {
+    display: none;
+    margin: 28px auto;
+    padding: 28px 18px;
+    max-width: 540px;
+    text-align: center;
+    background: rgba(255, 235, 229, .09);
+    border: 1px solid rgba(255, 219, 151, .7);
+    border-radius: 22px;
+    animation: reveal .6s ease;
+}
+
+.audio-card.show {
+    display: block;
+}
+
+.audio-card h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.audio-card p {
+    color: #ffe8ee;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.audio-frame {
+    width: 190px;
+    height: 190px;
+    max-width: 100%;
+    border: 0;
+    background: #fff4e9;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.audio-hint {
+    font-size: 11px !important;
+    color: #f4d5bb !important;
+    margin-top: 12px;
+}
+
+/* Wish section */
+
+.wish-card {
+    margin: 28px auto;
+    max-width: 650px;
+    text-align: center;
+    padding: 28px 20px;
+    border: 1px dashed var(--gold);
+    border-radius: 22px;
+    background: rgba(255, 206, 222, .07);
+}
+
+.wish-card h2 {
+    font-family: 'Playfair Display', serif;
+    color: #ffd999;
+    font-size: 24px;
+}
+
+.wish-card p {
+    color: #ffe7ef;
+    font-size: 13px;
+    margin: 12px 0;
+    line-height: 1.8;
+}
+
+#toast {
+    min-height: 25px;
+    color: var(--gold-light);
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+/* Music control */
+
+.music-control {
+    position: fixed;
+    right: 15px;
+    bottom: 18px;
+    z-index: 12;
+    padding: 12px 16px;
+    border: 1px solid var(--gold);
+    border-radius: 40px;
+    background: #54223f;
+    color: var(--gold-light);
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 193, 128, .2);
+    font-size: 12px;
+}
+
+/* Footer */
+
+.footer {
+    text-align: center;
+    color: #e9bbcf;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 25px 5px 5px;
+}
+
+.footer .heart {
+    color: #ffb3d0;
+}
+
+/* Mobile */
+
+@media(max-width: 550px) {
+    #main {
+        padding: 65px 12px 25px;
+    }
+
+    .hero {
+        padding: 45px 15px 30px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 11px;
+        padding: 13px 17px;
+    }
+
+    .message {
+        padding: 25px 15px;
+    }
+}
+
+/* ===================================
+   VIDYA'S PINK DIWALI MAKEOVER 🎀
+   =================================== */
+
+:root {
+    --pink: #ffabc9;
+    --light-pink: #ffe0ec;
+    --gold: #edbd72;
+    --gold-light: #fff0ca;
+    --wine: #8b4269;
+    --deep: #572844;
+    --cream: #fff8fb;
+}
+
+/* Dreamy pink background */
+
+body {
+    background:
+      radial-gradient(ellipse at 15% 10%, #ffc5dd 0%, transparent 38%),
+      radial-gradient(ellipse at 85% 25%, #f4c4ec 0%, transparent 36%),
+      radial-gradient(ellipse at 50% 90%, #ffb5d0 0%, transparent 40%),
+      linear-gradient(145deg, #ffe4ee, #f4c9e5 50%, #ffdae8) !important;
+
+    color: #713852;
+    background-attachment: fixed;
+}
+
+/* Soft dreamy floating glow */
+
+body::before,
+body::after {
+    content: "✧  ♡  ✿  ♡  ✧";
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+    font-size: 45px;
+    color: rgba(255,255,255,.55);
+    animation: floatingDecor 9s ease-in-out infinite alternate;
+}
+
+body::before {
+    top: 18%;
+    left: 2%;
+}
+
+body::after {
+    bottom: 12%;
+    right: 2%;
+    animation-delay: 2s;
+}
+
+@keyframes floatingDecor {
+    to {
+        transform: translateY(-30px) rotate(15deg);
+    }
+}
+
+/* Pink opening screen */
+
+#intro {
+    background:
+      radial-gradient(circle at 50% 40%, #ffc8dd, transparent 65%),
+      linear-gradient(145deg, #ffe5ef, #efc4e5, #ffd8e7) !important;
+}
+
+.intro-label {
+    color: #a15b7b;
+}
+
+.intro-title {
+    color: #b7487d;
+    text-shadow: 0 5px 25px rgba(213, 105, 157, .25);
+}
+
+/* Beautiful pink envelope */
+
+.envelope {
+    background: linear-gradient(135deg, #ffdfeb, #ffabc9) !important;
+    box-shadow:
+        0 15px 35px rgba(205, 92, 139, .25),
+        0 0 35px rgba(255,255,255,.8) !important;
+}
+
+.envelope::before {
+    background: linear-gradient(145deg, transparent 49%, #ed8fb1 50%);
+}
+
+.envelope .flap {
+    background: linear-gradient(135deg, #fff0f6, #ffaecb);
+}
+
+.envelope::after {
+    background: linear-gradient(135deg, #ffe8b2, #e5b45d);
+}
+
+/* Pink opening button */
+
+.open-btn,
+.btn {
+    background: linear-gradient(
+        110deg,
+        #ffabc9,
+        #fff0ce,
+        #f4b3d3
+    ) !important;
+
+    color: #823f62 !important;
+    border: 1px solid #fff4de;
+    box-shadow: 0 7px 22px rgba(186, 83, 128, .2);
+}
+
+.open-btn:hover,
+.btn:hover {
+    box-shadow: 0 0 35px rgba(235, 135, 177, .6);
+    transform: translateY(-4px) scale(1.05);
+}
+
+.btn.outline {
+    color: #9a5276 !important;
+    background: rgba(255,255,255,.55) !important;
+    border: 1px solid #e9b66d;
+}
+
+/* Main decorative card */
+
+.hero {
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,.82),
+        rgba(255,226,239,.76)
+      ) !important;
+
+    border: 2px solid #e9c17f !important;
+    box-shadow:
+        0 20px 60px rgba(174, 94, 136, .17),
+        0 0 40px rgba(255,255,255,.6),
+        inset 0 0 35px rgba(255,255,255,.7) !important;
+}
+
+.corners {
+    border-color: rgba(205, 148, 91, .35);
+}
+
+.hero::before,
+.hero::after {
+    color: #d5a557;
+    text-shadow: 0 0 15px #ffdbac;
+}
+
+/* Beautiful pink typography */
+
+.eyebrow,
+.ornament {
+    color: #bb8b46;
+}
+
+.main-heading {
+    color: #bd5a86 !important;
+    text-shadow: 0 3px 15px rgba(218, 126, 165, .2);
+}
+
+.vidya {
+    color: #ed81ae !important;
+    text-shadow:
+        0 0 15px rgba(255,255,255,.9),
+        0 0 35px rgba(255,151,188,.7);
+}
+
+.subtitle {
+    color: #86516e !important;
+}
+
+/* Glowing diyas */
+
+.diya {
+    filter: drop-shadow(0 0 17px #f9ac64);
+}
+
+/* Pink message card */
+
+.message {
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.8),
+        rgba(255,215,231,.8)
+    ) !important;
+
+    border: 2px solid #dfb36c !important;
+    box-shadow: 0 12px 35px rgba(174, 94, 136, .16);
+}
+
+.message h2 {
+    color: #dd75a1 !important;
+}
+
+.message p {
+    color: #77465e !important;
+}
+
+.signature {
+    color: #bc8a44 !important;
+}
+
+/* Pink music and audio sections */
+
+.audio-card,
+.wish-card {
+    background: rgba(255,255,255,.65) !important;
+    border: 1px solid #e6b977 !important;
+    box-shadow: 0 10px 30px rgba(174,94,136,.12);
+}
+
+.audio-card h2,
+.wish-card h2 {
+    color: #b85f88 !important;
+}
+
+.audio-card p,
+.wish-card p {
+    color: #81506a !important;
+}
+
+.audio-hint {
+    color: #9d6883 !important;
+}
+
+#toast {
+    color: #a34f79;
+}
+
+/* Pink fairy lights */
+
+.top-lights span {
+    background: #fff2e7;
+    box-shadow:
+        0 0 12px 4px #ffc0d9,
+        0 0 25px #f9a9c9;
+}
+
+/* Pink music button */
+
+.music-control {
+    background: linear-gradient(120deg, #bd648e, #e58fb2);
+    color: white;
+    border: 1px solid #ffe4b9;
+    box-shadow: 0 5px 20px rgba(150, 60, 110, .25);
+}
+
+/* Footer */
+
+.footer {
+    color: #925a77;
+}
+
+.footer .heart {
+    color: #e978a9;
+}
+
+/* Extra soft decorative card corners */
+
+@media (min-width: 600px) {
+    .hero {
+        border-radius: 35px !important;
+    }
+
+    .message,
+    .audio-card,
+    .wish-card {
+        border-radius: 28px !important;
+    }
+}
+
+.return-gift {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: linear-gradient(
+        120deg,
+        #f5a6c5,
+        #ffe4b5,
+        #f5b8d5
+    ) !important;
+    border: 2px solid #fff0cf;
+    box-shadow: 0 0 25px rgba(241, 153, 192, .5);
+    animation: giftPulse 2s infinite;
+}
+
+@keyframes giftPulse {
+    50% {
+        box-shadow: 0 0 32px rgba(241, 153, 192, .85);
+        transform: scale(1.04);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="petals"></div>
+<canvas id="effects"></canvas>
+
+<div class="top-lights">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+</div>
+
+<!-- OPENING INVITATION -->
+
+<section id="intro">
+
+    <div class="intro-label">
+        ✧ A SPECIAL FESTIVE INVITATION ✧
+    </div>
+
+    <h1 class="intro-title">
+        A little magic awaits...
+    </h1>
+
+    <div class="envelope" id="envelope" onclick="openInvitation()">
+        <div class="flap"></div>
+    </div>
+
+    <p style="color:#ffe3ef;line-height:2;font-size:13px;margin-bottom:20px;">
+        Someone has prepared a little Diwali surprise<br>
+        especially for you, Vidya! 💗
+    </p>
+
+    <button class="open-btn" onclick="openInvitation()">
+        OPEN YOUR INVITATION ✨
+    </button>
+
+</section>
+
+
+<!-- MAIN PAGE -->
+
+<main id="main">
+
+<div class="container">
+
+    <section class="hero">
+
+        <div class="corners"></div>
+
+        <div class="eyebrow">
+            ✨ THE FESTIVAL OF LIGHTS ✨
+        </div>
+
+        <div class="ornament">✿ ❀ ✿</div>
+
+        <h1 class="main-heading">
+            Happy<br>Diwali
+        </h1>
+
+        <div class="vidya">
+            Vidya
+        </div>
+
+        <div class="ornament">✧ ❀ ✧</div>
+
+        <p class="subtitle">
+            A beautiful festival deserves a beautiful surprise!
+            May your world be filled with sparkling moments,
+            endless happiness and golden memories. 💗
+        </p>
+
+        <div class="diyas" id="diyas">
+            <span class="diya">🪔</span>
+            <span class="diya">✨</span>
+            <span class="diya">🪔</span>
+        </div>
+
+        <p class="subtitle">
+            Tonight is all about lights, laughter, sweets
+            and a little extra magic!
+        </p>
+
+        <div class="actions">
+
+<a
+  class="btn return-gift"
+  href="https://wa.me/917643970355?text=Happy%20Diwali%20Gautam%20%F0%9F%AA%94%E2%9C%A8"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  🎁 SEND YOUR RETURN GIFT 💗
+</a>
+
+            <button class="btn" onclick="revealMessage()">
+                💌 OPEN YOUR LETTER
+            </button>
+
+            <button class="btn outline" onclick="lightDiyas()">
+                🪔 LIGHT THE DIYAS
+            </button>
+
+            <button class="btn outline" onclick="fireworksShow()">
+                🎆 FIREWORKS
+            </button>
+
+           
+
+        </div>
+
+    </section>
+
+
+    <!-- PERSONAL LETTER -->
+
+    <section class="message" id="message">
+
+        <div class="ornament">✧ ❀ ✧</div>
+
+        <h2>Dear Vidya 💗</h2>
+
+        <p>
+            This Diwali, I wish you all the happiness
+            that the universe can offer!
+
+            <br><br>
+
+            May every diya bring new hope,
+            every sparkle bring a beautiful memory,
+            and every new day give you another reason to smile.
+
+            <br><br>
+
+            May your dreams shine brighter than the stars,
+            your laughter never fade,
+            and your life always be surrounded by
+            positivity, love and success.
+
+            <br><br>
+
+            Keep smiling, keep shining
+            and enjoy every little moment of life!
+
+            <br><br>
+
+            You deserve a Diwali as wonderful as you are. ✨
+
+        </p>
+
+        <div class="signature">
+            With lots of festive wishes,<br>
+            Gautam 💛
+        </div>
+
+        <div class="ornament">✧ ❀ ✧</div>
+
+    </section>
+
+
+    <!-- JETHALAL AUDIO -->
+
+    <section class="audio-card" id="audioCard">
+
+        <div style="font-size:38px;margin-bottom:10px;">
+            🎤
+        </div>
+
+        <h2>Special Guest Appearance!</h2>
+
+        <p>
+            Vidya, even Jethalal has arrived to wish you
+            a very Happy Diwali! 😂🪔
+        </p>
+
+        <iframe
+            class="audio-frame"
+            src="https://myinstantplay.com/embed/jethalal?theme=light"
+            title="Jethalal Happy Diwali Audio"
+            allow="autoplay"
+            loading="lazy">
+        </iframe>
+
+        <p class="audio-hint">
+            Press PLAY inside the player to hear the greeting.
+            Sound availability depends on the external player.
+        </p>
+
+        <button class="btn outline" onclick="browserGreeting()">
+            💗 PLAY BROWSER GREETING
+        </button>
+
+    </section>
+
+
+    <!-- MAKE A WISH -->
+
+    <section class="wish-card">
+
+        <div style="font-size:35px;">🌟</div>
+
+        <h2>Make a Little Wish</h2>
+
+        <p>
+            Close your eyes, think of something beautiful
+            and let the Diwali magic do its work!
+        </p>
+
+        <button class="btn" onclick="makeWish()">
+            ✨ SEND MY WISH
+        </button>
+
+        <div id="toast"></div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+        MADE WITH <span class="heart">♥</span> AND FESTIVE MAGIC
+        <br><br>
+        A LITTLE DIWALI SURPRISE FOR VIDYA
+    </div>
+
+</div>
+</main>
+
+
+<button class="music-control" id="musicButton" onclick="toggleMusic()">
+    🎵 FESTIVE MUSIC
+</button>
+
+
+<script>
+
+// OPEN THE INVITATION
+
+function openInvitation() {
+
+    const envelope = document.getElementById("envelope");
+
+    envelope.classList.add("open");
+
+    fireworksShow();
+
+    setTimeout(() => {
+
+        document.getElementById("intro").classList.add("hide");
+
+        document.getElementById("main").classList.add("visible");
+
+        window.scrollTo({top: 0, behavior: "smooth"});
+
+        fireworksShow();
+
+    }, 650);
+}
+
+
+// REVEAL THE LETTER
+
+function revealMessage() {
+
+    const message = document.getElementById("message");
+
+    message.classList.add("show");
+
+    fireworksShow();
+
+    setTimeout(() => {
+        message.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }, 150);
+}
+
+
+// LIGHT THE DIYAS
+
+function lightDiyas() {
+
+    const diyas = document.querySelectorAll(".diya");
+
+    diyas.forEach(diya => {
+        diya.style.filter =
+            "drop-shadow(0 0 28px #ffba55)";
+
+        diya.style.transform =
+            "scale(1.25)";
+    });
+
+    fireworksShow();
+
+}
+
+
+// SHOW JETHALAL AUDIO
+
+function showAudio() {
+
+    const audio = document.getElementById("audioCard");
+
+    audio.classList.add("show");
+
+    audio.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+// BROWSER VOICE FALLBACK
+// This is a normal browser voice, not Jethalal's original voice.
+
+function browserGreeting() {
+
+    if(!("speechSynthesis" in window)) {
+
+        alert("Your browser does not support voice playback.");
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const message = new SpeechSynthesisUtterance(
+        "Happy Diwali, Vidya! May your life be full of happiness, laughter and beautiful memories. Best wishes from Gautam!"
+    );
+
+    message.lang = "en-IN";
+    message.rate = 0.92;
+    message.pitch = 1.15;
+
+    window.speechSynthesis.speak(message);
+
+    fireworksShow();
+
+}
+
+
+// MAKE A WISH
+
+function makeWish() {
+
+    const toast = document.getElementById("toast");
+
+    toast.innerText =
+        "✨ Your wish is on its way! Keep shining, Vidya! 💗";
+
+    fireworksShow();
+
+    setTimeout(fireworksShow, 700);
+
+}
+
+
+// FLOWER PETALS
+
+const petalSymbols = ["🌸", "🌺", "✿", "✨", "🌼"];
+
+function createPetal() {
+
+    const petal = document.createElement("span");
+
+    petal.className = "petal";
+
+    petal.innerText =
+        petalSymbols[
+            Math.floor(Math.random() * petalSymbols.length)
+        ];
+
+    petal.style.left = Math.random() * 100 + "vw";
+
+    petal.style.fontSize =
+        (12 + Math.random() * 15) + "px";
+
+    petal.style.animationDuration =
+        (5 + Math.random() * 6) + "s";
+
+    document.getElementById("petals").appendChild(petal);
+
+    setTimeout(() => petal.remove(), 11000);
+}
+
+setInterval(createPetal, 400);
+
+
+// FIREWORKS ENGINE
+
+const canvas = document.getElementById("effects");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas() {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+
+function fireworksShow() {
+
+    const colors = [
+        "#ffe4a5",
+        "#ffb7d2",
+        "#fff7d7",
+        "#ff82b5",
+        "#f5c56d"
+    ];
+
+    for(let j = 0; j < 5; j++) {
+
+        const x = Math.random() * canvas.width;
+
+        const y = Math.random() * canvas.height * .65;
+
+        const color =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        for(let i = 0; i < 55; i++) {
+
+            const angle = Math.PI * 2 * i / 55;
+
+            const velocity = Math.random() * 4 + 1;
+
+            particles.push({
+
+                x: x,
+                y: y,
+
+                vx: Math.cos(angle) * velocity,
+
+                vy: Math.sin(angle) * velocity,
+
+                life: 80 + Math.random() * 25,
+
+                maxLife: 100,
+
+                color: color,
+
+                size: Math.random() * 2 + 1
+
+            });
+
+        }
+    }
+}
+
+
+function animateFireworks() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for(let i = particles.length - 1; i >= 0; i--) {
+
+        const p = particles[i];
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        p.vy += .035;
+
+        p.vx *= .99;
+
+        p.life--;
+
+        ctx.globalAlpha = Math.max(0, p.life / p.maxLife);
+
+        ctx.fillStyle = p.color;
+
+        ctx.beginPath();
+
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+
+        ctx.fill();
+
+        if(p.life <= 0) {
+            particles.splice(i, 1);
+        }
+
+    }
+
+    ctx.globalAlpha = 1;
+
+    requestAnimationFrame(animateFireworks);
+
+}
+
+animateFireworks();
+
+
+// RANDOM BACKGROUND FIREWORKS
+
+setInterval(() => {
+
+    if(Math.random() > .55) {
+        fireworksShow();
+    }
+
+}, 5000);
+
+
+// SIMPLE FESTIVE BACKGROUND MUSIC
+// Starts only after pressing the music button.
+
+let audioContext = null;
+let musicTimer = null;
+let musicActive = false;
+let musicIndex = 0;
+
+function toggleMusic() {
+
+    const AudioContext =
+        window.AudioContext || window.webkitAudioContext;
+
+    if(!AudioContext) {
+        alert("Audio is not supported by this browser.");
+        return;
+    }
+
+    if(!audioContext) {
+        audioContext = new AudioContext();
+    }
+
+    if(audioContext.state === "suspended") {
+        audioContext.resume();
+    }
+
+    musicActive = !musicActive;
+
+    const button = document.getElementById("musicButton");
+
+    button.innerText = musicActive
+        ? "🔊 MUSIC ON"
+        : "🎵 FESTIVE MUSIC";
+
+    clearInterval(musicTimer);
+
+    if(!musicActive) return;
+
+    const notes = [
+        523, 659, 784, 659,
+        587, 698, 784, 880
+    ];
+
+    musicTimer = setInterval(() => {
+
+        const osc = audioContext.createOscillator();
+
+        const gain = audioContext.createGain();
+
+        osc.type = "sine";
+
+        osc.frequency.value =
+            notes[musicIndex % notes.length];
+
+        gain.gain.setValueAtTime(
+            .0001, audioContext.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .045, audioContext.currentTime + .06
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .0001, audioContext.currentTime + .45
+        );
+
+        osc.connect(gain);
+
+        gain.connect(audioContext.destination);
+
+        osc.start();
+
+        osc.stop(audioContext.currentTime + .5);
+
+        musicIndex++;
+
+    }, 480);
+
+}
+
+</script>
+
+</body>
+</html>
